@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">recycler-retry</string>
+    <string name="no_id_error">Please enter an Id number in the input space</string>
 </resources>

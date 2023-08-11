@@ -18,9 +18,7 @@ public class RetrofitModel {
     private static String BASE_URL = "https://jsonplaceholder.typicode.com";
     private static String mint;
 
-    public RetrofitModel() {}
-
-    public String getSinglePost(int id) {
+    public static String getSinglePost(int id) {
 
         Retrofit retrofit = new Retrofit.Builder()
                 . baseUrl(BASE_URL)
@@ -105,7 +103,7 @@ public class RetrofitModel {
         return mint;
     }
 
-    public void downloadDataToDb() {
+    public static void downloadDataToDb() {
 
     }
 }

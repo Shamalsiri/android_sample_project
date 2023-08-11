@@ -14,7 +14,8 @@ import com.example.recycler_retry.R;
 import com.example.recycler_retry.model.RetrofitModel;
 
 public class RetrofitActivity extends AppCompatActivity implements View.OnClickListener {
-    
+
+    private final String TAG = "SSIRI";
     private Button downloadToDbBtn, displayAllPostsBtn, displaySinglePostBtn, exitBtn;
     private EditText postIdEt;
     private TextView postsTv;
@@ -26,8 +27,7 @@ public class RetrofitActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrofit);
-        rfModel = new RetrofitModel();
-        
+
         setupComponents();
     }
     
@@ -45,12 +45,6 @@ public class RetrofitActivity extends AppCompatActivity implements View.OnClickL
         
         //EditText
         postIdEt = findViewById(R.id.et_post_id);
-        postIdEt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-
-            }
-        });
         
         //TextView
         postsTv = findViewById(R.id.tv_posts);
@@ -63,30 +57,33 @@ public class RetrofitActivity extends AppCompatActivity implements View.OnClickL
         String content;
         
         if (viewId == R.id.btn_download_to_db) {
-            rfModel.downloadDataToDb();
+            RetrofitModel.downloadDataToDb();
+
         } else if (viewId == R.id.btn_display_all_posts) {
             postsTv.setTextColor(Color.BLACK);
 
             content = RetrofitModel.getAllPosts();
             postsTv.setText(content);
+
         } else if (viewId == R.id.btn_display_single_post) {
             postsTv.setTextColor(Color.BLACK);
 
             if (postIdEt.getText().toString().length() != 0) {
                 id = Integer.valueOf(postIdEt.getText().toString());
-                Log.d("SSIRI", "ID: " + id);
+                Log.d(TAG, "ID: " + id);
 
-                content = rfModel.getSinglePost(id);
+                content = RetrofitModel.getSinglePost(id);
                 postsTv.setText(content);
 
             } else {
                 postsTv.setTextColor(Color.RED);
-                postsTv.setText("Please enter an Id number in the input space");
+                postsTv.setText(R.string.no_id_error);
 
             }
 
         } else if (viewId == R.id.btn_exit) {
             finish();
+
         }
     }
 
