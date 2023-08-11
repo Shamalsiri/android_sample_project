@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.RetrofitActivity"
+    android:padding="8dp">
+
+    <Button
+        android:id="@+id/btn_download_to_db"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download to Database"/>
+
+    <Button
+        android:id="@+id/btn_display_all_posts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Display all Posts"
+        android:layout_below="@id/btn_download_to_db"/>
+
+    <Button
+        android:id="@+id/btn_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exit"
+        android:layout_below="@id/btn_download_to_db"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:id="@+id/btn_display_single_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Display Single Post"
+        android:layout_below="@+id/btn_display_all_posts"/>
+
+    <EditText
+        android:id="@+id/et_post_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/btn_display_single_post"
+        android:layout_below="@+id/btn_display_all_posts"
+        android:layout_marginLeft="8dp"
+        android:inputType="number"
+        android:hint="##" />
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btn_display_single_post"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tv_posts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </ScrollView>
+
+</RelativeLayout>
